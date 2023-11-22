@@ -11,7 +11,7 @@
 			<li><a href="index.php?page=tutorial">TUTORIAL</a></li>
 		</ul>
 	</div>
- 
+	<p>qwerty</p>
 	<div class="badan">
  
  

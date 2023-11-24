@@ -14,15 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('home', [AppController::class,"home"]);
+Route::get('/', [AppController::class,"home"]);
 
 Route::get("template",function(){ return view('template'); });
 
 Route::get("profil",function(){ return view('profil');});
-Route::get("data",function(){ return view('data');});
+Route::get("data_wisata",function(){ return view('data_wisata');});
 
 Route::get("data-wisata",[AppController::class,"data_wisata"]);
-Route::get("data/{id}/hapus",[AppController::class,"hapus"]);
+Route::get("data-wisata/{id}/hapus",[AppController::class,"hapus"]);
 Route::get("tambah-wisata",[AppController::class,"tambah_wisata"]);
 Route::post("tambah-wisata",[AppController::class,"proses_tambah_wisata"]);
 Route::get("data/{id}/edit",[AppController::class,"edit"]);

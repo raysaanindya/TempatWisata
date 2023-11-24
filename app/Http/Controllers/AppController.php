@@ -7,70 +7,26 @@ use App\Models\Wisata;
 
 class AppController extends Controller
 {
-    //
-    public function hello(){
-        $data = ([
-            "name"  => "raysa",
-        ]);
-        return view("hello",$data);
-    }
 
     public function home(){
         return view("home");
     }
-    public function data(){
-        $wisata = wisata::get();
+    public function data_wisata(){
+        $destinations = Destinations::get();
 
         $data = ([
-            "wisata" => $wisata,
+            "destinations" => $destinations,
         ]);
-        return view("data_wisata",$data-wisata);
+        return view("data_wisata", $data);
     }
-    public function hapus($id){
-        wisata::where("id", $id)->delete();
-        return redirect("data_wisata");
+    public function hapus_wisata($id){
+        Destinations::where("id",$id)->delete();
+        return redirect("data-wisata");
     }
-    public function tambah(){
+    public function tambah_wisata(){
         return view("tambah_wisata");
     }
     public function proses_tambah_wisata(Request $request){
-                 $id = $_request->id;
-                 $name = $request->name;
-                 $location = $request->location;
-                 $details = $request->details;
-                 $day_open = $request->day_open;
-                 $time_open = $request->time_open;
-                 $pricing = $request->pricing;
-
-                 wisata::create([
-                    "id" => $id,
-                    "name" => $name,
-                    "location" => $location,
-                    "details" => $details,
-                    "day_open" => $day-open,
-                    "time_open" => $time_open,
-                    "pricing" => $pricing
-                 ]);
-
-                 session()->flash("pesan","data berhsil ditambah");
-
-                 return redirect("data_wisata");
-    }
-    public function edit($id){
-        $wisata = Wisata::where("id",$id)->first();
-
-        if(!$wisata){
-            abort(404);
-        }
-
-        $data = ([
-            "wisata"  => $wisata
-        ]);
-
-        return view("edit",$data);
-    }
-    public function proses_edit_wisata(Request $request){
-        $id = $_request->id;
         $name = $request->name;
         $location = $request->location;
         $details = $request->details;
@@ -78,19 +34,53 @@ class AppController extends Controller
         $time_open = $request->time_open;
         $pricing = $request->pricing;
 
-        wisata::create([
-           "id" => $id,
-           "name" => $name,
-           "location" => $location,
-           "details" => $details,
-           "day_open" => $day-open,
-           "time_open" => $time_open,
-           "pricing" => $pricing
+        Destinations::create([
+            "name" => $name,
+            "location" => $location,
+            "details" => $details,
+            "day_open" => $day_open,
+            "time_open" => $time_open,
+            "pricing" => $pricing
         ]);
 
-        session()->flash("pesan","data berhasil ditambah");
+        session()->flash("pesan"," Data Berhasil Ditambah");
 
-        return redirect("data");
+        return redirect('data-wisata');
+    }
+    public function edit_wisata($id){
+        $destinations = Destinations::find($id);
+    
+        if (!$destinations) {
+            abort(404);
+        }
+    
+        return view("edit_wisata", ['destinations' => $destinations]);
+    }
+    public function proses_edit_wisata(Request $request){
+        $id = $request->id;
+        $name = $request->name;
+        $location = $request->location;
+        $details = $request->details;
+        $day_open = $request->day_open;
+        $time_open = $request->time_open;
+        $pricing = $request->pricing;
+        
+
+        Destinations::where("id",$id)->update([
+            "name" => $name,
+            "location" => $location,
+            "details" => $details,
+            "day_open" => $day_open,
+            "time_open" => $time_open,
+            "pricing" => $pricing
+            
+        ]);
+
+        session()->flash("pesan","Data Berhasil Diedit");
+
+        return redirect("data-wisata/".$id."/edit");
+    }
+
 }
 
-}
+

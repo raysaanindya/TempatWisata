@@ -88,7 +88,7 @@ class AppController extends Controller
            "pricing" => $pricing
         ]);
 
-        session()->flash("pesan","data berhsil ditambah");
+        session()->flash("pesan","data berhasil ditambah");
 
         return redirect("data");
 }

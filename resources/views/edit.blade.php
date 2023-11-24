@@ -51,7 +51,7 @@ edit pegawai
     <button type="submit" class="btn btn-succes">
         simpan
     </button>
-    <a href="{{ url('data-pegawai') }}" class="btn btn-danger">
+    <a href="{{ url('data-wisata') }}" class="btn btn-danger">
         kembali
     </a>
 </div>

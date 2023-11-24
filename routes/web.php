@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Route::get('home', [AppController::class,"home"]);
 
 Route::get("template",function(){ return view('template'); });

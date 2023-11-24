@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Wisata;
 
 class AppController extends Controller
 {
@@ -23,11 +24,11 @@ class AppController extends Controller
         $data = ([
             "wisata" => $wisata,
         ]);
-        return view("data",$data);
+        return view("data_wisata",$data-wisata);
     }
     public function hapus($id){
         wisata::where("id", $id)->delete();
-        return redirect("data");
+        return redirect("data_wisata");
     }
     public function tambah(){
         return view("tambah_wisata");
@@ -53,7 +54,7 @@ class AppController extends Controller
 
                  session()->flash("pesan","data berhsil ditambah");
 
-                 return redirect("data");
+                 return redirect("data_wisata");
     }
     public function edit($id){
         $wisata = Wisata::where("id",$id)->first();

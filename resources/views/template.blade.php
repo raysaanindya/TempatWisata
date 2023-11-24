@@ -12,7 +12,7 @@
             <a href="{{ url('/') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-            <a href="{{ url('data-pegawai') }}" class="nav-link">data</a>
+            <a href="{{ url('data-wisata') }}" class="nav-link">data</a>
         </li>
     </ul>
     <hr>

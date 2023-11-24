@@ -25,7 +25,7 @@ Home
     <?php
     $no = 0;
     ?>
-    @foreach($pegawai as = $data)
+    @foreach($wisata as = $data)
     <?php $no++; ?>
     <tr>
         <td class="text-center">{{ $id }}</td>
@@ -46,7 +46,7 @@ Home
             <a href="{{ url('data-wisata/'.$data->id.'/edit') }}" class="btn btn-succes btn-sm">
                 Edit
             </a>
-            <a href="{{ url('data-pegawai/'.$data->id.'/hapus') }}" onclick="return confirm('Yakin hapus {{ $data->nama }}.?')" class="btn btn-sm btn-danger">
+            <a href="{{ url('data-wisata/'.$data->id.'/hapus') }}" onclick="return confirm('Yakin hapus {{ $data->nama }}.?')" class="btn btn-sm btn-danger">
                 Hapus
              </a>
         </td>
